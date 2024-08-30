@@ -11,7 +11,7 @@ function TopMenu() {
 }
   return (
     <div className="top_menu">
-      <Modal.Dialog>  
+      {/* <Modal.Dialog>  
   <Modal.Header closeButton>  
     <Modal.Title>Title for Modal</Modal.Title>  
   </Modal.Header>  
@@ -24,7 +24,7 @@ function TopMenu() {
     <Button variant="secondary">Close Modal</Button>  
     <Button variant="primary">Save changes</Button>  
   </Modal.Footer>  
-</Modal.Dialog>  
+</Modal.Dialog>   */}
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
       <Container fluid>
         <Navbar.Brand href="#home" style={{minWidth:'225px'}}>React-Bootstrap</Navbar.Brand>
