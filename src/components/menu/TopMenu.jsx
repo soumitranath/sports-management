@@ -2,13 +2,17 @@ import React from "react";
 import Container from 'react-bootstrap/Container';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
-import {Modal, Button} from 'react-bootstrap';  
-
+import { Modal, Button } from 'react-bootstrap';
+import { useNavigate } from "react-router-dom";
 function TopMenu() {
-  const logoutHandler=(e)=>{
+  const navigate = useNavigate();
+  const logoutHandler = (e) => {
     // e.preventDefault();
-    sessionStorage.removeItem('email');
-}
+    // sessionStorage.removeItem('email');
+    sessionStorage.clear()
+    navigate("/login")
+
+  }
   return (
     <div className="top_menu">
       {/* <Modal.Dialog>  
@@ -26,22 +30,22 @@ function TopMenu() {
   </Modal.Footer>  
 </Modal.Dialog>   */}
       <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
-      <Container fluid>
-        <Navbar.Brand href="#home" style={{minWidth:'225px'}}>React-Bootstrap</Navbar.Brand>
-        <Navbar.Toggle aria-controls="responsive-navbar-nav" />
-        <Navbar.Collapse id="responsive-navbar-nav">
-          <Nav className="me-auto">
-            <Nav.Link href="#features"><i className="fa fa-bars" aria-hidden="true"></i></Nav.Link>
-          </Nav>
-          <Nav>
-            <Nav.Link href="#deets">Account</Nav.Link>
-            <Nav.Link onClick={logoutHandler}>
-              Logout
-            </Nav.Link>
-          </Nav>
-        </Navbar.Collapse>
-      </Container>
-    </Navbar>
+        <Container fluid>
+          <Navbar.Brand href="#home" style={{ minWidth: '225px' }}>React-Bootstrap</Navbar.Brand>
+          <Navbar.Toggle aria-controls="responsive-navbar-nav" />
+          <Navbar.Collapse id="responsive-navbar-nav">
+            <Nav className="me-auto">
+              <Nav.Link href="#features"><i className="fa fa-bars" aria-hidden="true"></i></Nav.Link>
+            </Nav>
+            <Nav>
+              <Nav.Link href="#deets">Account</Nav.Link>
+              <Nav.Link onClick={logoutHandler}>
+                Logout
+              </Nav.Link>
+            </Nav>
+          </Navbar.Collapse>
+        </Container>
+      </Navbar>
     </div>
   );
 }
