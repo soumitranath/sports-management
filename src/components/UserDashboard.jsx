@@ -5,7 +5,7 @@ import { ThemeProvider } from "@mui/material/styles";
 import { createTheme } from "@mui/material/styles";
 import { CacheProvider } from "@emotion/react";
 import createCache from "@emotion/cache";
-
+import axios from "axios"
 const muiCache = createCache({
   key: "mui-datatables",
   prepend: true
@@ -215,7 +215,10 @@ function UserDashboard() {
     {id:"RNSA003", name:"Somi", address:"Maharashtra", mobileNo:"8657936393", alternateMobileNo:"8657936392",schoolName:"JNV", standard:"1st",dateOfBirth:"1st April", previousActivities:"yes", inSports:"yes", enterPreviousActivitiesDetails:"only testing", joiningDate:"1st April", selectInterestedSports:"Footbal", previousHealthInjuries: "Only testing",medicalHistory: "Only Testing", batchTiming:"Morning", trainingPeriod:"3 month", jerseySize:"xs", amountToBePaid:"30000", paidAmount:"25000", nextEMIDate:"5th Nov 2023"},
     ];
 
-
+useEffect(()=>{
+  axios.get("https://www.rnsa.in/api/public/student")
+}
+,[])
   return (
     <div className="container_layout">
       <h4 className="page_title">User Dashboard</h4>

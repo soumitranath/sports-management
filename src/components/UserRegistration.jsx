@@ -1,11 +1,15 @@
 
 import { useState } from "react";
 import axios from "axios";
+import { toast } from "sonner";
+
+// const url =`https://octavenine.com/projects/api/User/user_registration`
+const url = "https://www.rnsa.in/api/public/student"
 const UserRegistration = () => {
     const initialFormData = Object.freeze({
         name: '',
         address: '',
-        number: '',
+        mobile_no: '',
         altNumber: '',
         schoolName: '',
         standard: '',
@@ -36,11 +40,14 @@ const UserRegistration = () => {
     };
     const formHandler = (e) => {
         e.preventDefault();
-        axios.post(`https://octavenine.com/projects/api/User/user_registration`, formData)
+        axios.post(url, formData)
             .then(res => {
-                console.log(res);
+                // console.log(res);
                 console.log(res.data);
-            })
+                if(res.data.status=="error"){
+                    toast.error(res.data.message)
+                }
+            }).catch((err)=>console.log(err))
     }
     return (
         <div className="container_layout">
@@ -61,7 +68,7 @@ const UserRegistration = () => {
                                 <div className="col">
                                     <div className="form-group">
                                         <label>Mobile No</label>
-                                        <input type="number" className="form-control" id="number" placeholder="Enter Mobile No" name="number" onChange={handleChange} />
+                                        <input type="number" className="form-control" id="mobile_no" placeholder="Enter Mobile No" name="mobile_no" onChange={handleChange} />
                                     </div>
                                 </div>
                                 <div className="col">

@@ -1,6 +1,7 @@
-import { useState } from "react";
+import { useState, useEffect } from "react";
 import axios from "axios"
 import { useNavigate } from "react-router-dom";
+import { toast } from "sonner"
 const defaultData = {
     "email": "test1@gmail.com",
     "password": "12345678"
@@ -9,7 +10,12 @@ function Login(props) {
     const [email, setEmail] = useState('');
     const [password, setPassword] = useState('');
     const navigate = useNavigate();
-
+    useEffect(() => {
+        let userDetails = sessionStorage.getItem("userDetails")
+        if (userDetails) {
+            navigate("/")
+        }
+    }, [])
     const loginHandler = (e) => {
         e.preventDefault();
 
@@ -31,6 +37,7 @@ function Login(props) {
                 console.log(response.data);
                 sessionStorage.setItem("userDetails", JSON.stringify(response.data.data))
                 navigate("/")
+                toast.success("Login Successfuilly!!")
             })
             .catch(error => {
                 console.error(error);

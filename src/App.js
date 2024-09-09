@@ -11,12 +11,12 @@ import Badminton from "./components/Badminton";
 import Login from "./components/Login";
 import AddExpense from "./components/AddExpense";
 import DashWrapper from "./components/DashWrapper";
-
+import { Toaster } from "sonner";
 function App() {
   return (<BrowserRouter>
     <div className="App">
 
-
+<Toaster richColors position="top-right"/>
 
 
       <Routes>
